@@ -5,6 +5,18 @@
 const whatsapp = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "").replace(/\D/g, "");
 const email = (process.env.NEXT_PUBLIC_CONTACT_EMAIL || "luarmorocha08@gmail.com").trim();
 
+/**
+ * URL pública: NEXT_PUBLIC_SITE_URL (domínio próprio) → domínio de produção
+ * que a Vercel injeta automaticamente → localhost em desenvolvimento.
+ */
+function siteUrl() {
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (explicit) return explicit.replace(/\/$/, "");
+  const vercel = process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL ?? process.env.VERCEL_PROJECT_PRODUCTION_URL;
+  if (vercel) return `https://${vercel}`;
+  return "http://localhost:3000";
+}
+
 export const site = {
   name: "RAUL RAMOS",
   shortName: "Raul Ramos",
@@ -13,7 +25,7 @@ export const site = {
   tagline: "Transformando ideias em experiências digitais inteligentes.",
   description:
     "Raul Ramos — AI Developer & Creative Technologist. Sites premium, sistemas, automações e experiências digitais impulsionadas por inteligência artificial.",
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, ""),
+  url: siteUrl(),
   locale: "pt_BR",
   instagram: {
     handle: "@ramosraul.ia",

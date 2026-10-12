@@ -29,6 +29,13 @@ Requer Node.js 20.9+.
 
 ---
 
+## Publicando na Vercel
+
+1. Em [vercel.com/new](https://vercel.com/new), importe o repositório `luarmorocha08-rgb/ramosraul.ia`. O framework (Next.js) é detectado sozinho; não mude build nem output.
+2. Clique em **Deploy**. Nenhuma variável é obrigatória: sem elas o site sobe em modo demonstração e o formulário abre o e-mail do visitante.
+3. Depois, em **Settings → Environment Variables**, adicione o que quiser ativar (tabela abaixo) e faça **Redeploy**.
+4. Domínio próprio: em **Settings → Domains**. Se usar um, defina também `NEXT_PUBLIC_SITE_URL` com ele; sem isso o site usa o domínio `*.vercel.app` do projeto em SEO, sitemap e Open Graph.
+
 ## Configuração (`.env.local`)
 
 Tudo é opcional. Sem credenciais, cada recurso entra em um modo honesto e claramente sinalizado.
