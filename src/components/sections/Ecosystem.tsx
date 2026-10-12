@@ -120,7 +120,7 @@ export default function Ecosystem() {
       }
       const w = el.clientWidth;
       const h = el.clientHeight;
-      const R = Math.min(w, h) * 0.36 * r.zoom;
+      const R = Math.min(w, h) * (w < 640 ? 0.3 : 0.36) * r.zoom;
       const cy = Math.cos(r.y), sy = Math.sin(r.y), cx = Math.cos(r.x), sx = Math.sin(r.x);
 
       base.forEach((p, i) => {

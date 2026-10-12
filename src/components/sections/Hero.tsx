@@ -72,7 +72,7 @@ export default function Hero() {
     if (!el || prefersReducedMotion()) return;
     const { gsap } = getGsap();
     const ctx = gsap.context(() => {
-      gsap.from("[data-hero-fade]", { opacity: 0, y: 24, duration: 1.2, ease: "expo.out", stagger: 0.08, delay: bootDelay() + 0.5 });
+      gsap.from("[data-hero-fade]", { opacity: 0, y: 24, duration: 1.2, ease: "expo.out", stagger: 0.08, delay: bootDelay() + 0.25 });
       gsap.to("[data-hero-content]", {
         yPercent: -18,
         opacity: 0,

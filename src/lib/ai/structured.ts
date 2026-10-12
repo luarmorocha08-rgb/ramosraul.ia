@@ -8,15 +8,16 @@ import { guardAi } from "./guard";
 import { textInputSchema, type AiResult } from "./schemas";
 import { cleanText } from "../sanitize";
 
-interface StructuredRoute<T> {
+interface StructuredRoute<W, T> {
   scope: string;
-  schema: z.ZodType<T>;
+  /** schema enviado ao modelo (formato "de fio") */
+  schema: z.ZodType<W>;
   system: string;
   /** Monta a mensagem do usuário a partir da entrada já sanitizada. */
   userMessage: (input: string) => string;
   demo: (input: string) => T;
-  /** Pós-processamento/validação extra da saída do modelo. */
-  refine?: (data: T, input: string) => T;
+  /** Converte/normaliza a saída do modelo para o formato usado pela UI. */
+  refine: (data: W, input: string) => T;
   maxTokens?: number;
 }
 
@@ -27,7 +28,7 @@ const DEMO_NOTICE = "Modo demonstração: resultado gerado por regras locais, n�
  * valida entrada → aplica limites → chama o modelo (ou o motor de demo)
  * → valida a saída com Zod → responde JSON.
  */
-export function structuredHandler<T>(route: StructuredRoute<T>) {
+export function structuredHandler<W, T>(route: StructuredRoute<W, T>) {
   return async function POST(req: Request) {
     const limited = await guardAi(req, route.scope);
     if (limited) return limited;
@@ -62,7 +63,7 @@ export function structuredHandler<T>(route: StructuredRoute<T>) {
       if (response.stop_reason === "max_tokens" || !response.parsed_output) {
         return NextResponse.json({ error: "A resposta veio incompleta. Tente novamente." }, { status: 502 });
       }
-      const data = route.refine ? route.refine(response.parsed_output as T, input) : (response.parsed_output as T);
+      const data = route.refine(response.parsed_output as W, input);
       const result: AiResult<T> = { mode: "live", data };
       return NextResponse.json(result);
     } catch (error) {

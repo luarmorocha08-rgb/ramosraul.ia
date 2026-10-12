@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-import { getGsap } from "@/lib/gsap";
+import { bootDelay, getGsap } from "@/lib/gsap";
 import { useReducedMotion } from "@/hooks/useMediaQuery";
 import { sceneState, setSceneTarget, setShape } from "./sceneStore";
 
@@ -23,10 +23,10 @@ interface SectionScene {
  */
 const CHOREOGRAPHY: Record<string, SectionScene> = {
   home: { shape: "hero", x: 1.45, scale: 1, opacity: 1 },
-  about: { shape: 3, x: -1.9, scale: 0.85, opacity: 0.55 },
+  about: { shape: 3, x: -2.3, scale: 0.85, opacity: 0.4 },
   lab: { shape: 1, x: 0, scale: 1.35, opacity: 0.2 },
-  capabilities: { shape: 2, x: 0, y: -0.3, scale: 1.15, opacity: 0.32 },
-  ecosystem: { shape: 4, x: 0, scale: 1.1, opacity: 0.14 },
+  capabilities: { shape: 2, x: 0, y: -0.3, scale: 1.15, opacity: 0.26 },
+  ecosystem: { shape: 4, x: 0, scale: 1.1, opacity: 0.08 },
   projects: { shape: 4, x: 1.6, scale: 0.9, opacity: 0.16 },
   code: { shape: 1, x: 0, scale: 1.2, opacity: 0.12 },
   workflow: { shape: 3, x: 2, scale: 0.85, opacity: 0.3 },
@@ -60,14 +60,17 @@ export default function SceneBackground() {
   const [support, setSupport] = useState<null | { webgl: boolean; count: number }>(null);
 
   useEffect(() => {
-    // adiado para depois da primeira pintura — não compete com o LCP
+    // adiado até a intro terminar e o navegador ficar ocioso — não compete com o LCP
     const init = () => setSupport({ webgl: detectWebGL(), count: particleBudget() });
-    if ("requestIdleCallback" in window) {
-      const id = window.requestIdleCallback(init, { timeout: 1200 });
-      return () => window.cancelIdleCallback(id);
-    }
-    const id = globalThis.setTimeout(init, 300);
-    return () => globalThis.clearTimeout(id);
+    let idle = 0;
+    const t = globalThis.setTimeout(() => {
+      if ("requestIdleCallback" in window) idle = window.requestIdleCallback(init, { timeout: 1200 });
+      else init();
+    }, Math.max(0, bootDelay() - 0.4) * 1000);
+    return () => {
+      globalThis.clearTimeout(t);
+      if (idle) window.cancelIdleCallback(idle);
+    };
   }, []);
 
   // Ponteiro global
@@ -105,7 +108,9 @@ export default function SceneBackground() {
         end: "bottom 55%",
         onToggle: (self) => {
           if (!self.isActive) return;
-          setSceneTarget({ x: cfg.x, y: cfg.y ?? 0, scale: cfg.scale, opacity: cfg.opacity });
+          // no mobile o conteúdo ocupa toda a largura: a cena fica mais discreta
+          const mobile = window.innerWidth < 768 && id !== "home";
+          setSceneTarget({ x: cfg.x, y: cfg.y ?? 0, scale: cfg.scale, opacity: cfg.opacity * (mobile ? 0.55 : 1) });
           setShape(cfg.shape === "hero" ? sceneState.heroShape : cfg.shape);
         },
       });

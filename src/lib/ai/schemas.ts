@@ -18,19 +18,35 @@ export const textInputSchema = z.object({
   input: z.string().trim().min(8, "Descreva um pouco mais (mínimo de 8 caracteres).").max(1200),
 });
 
-/* ─── Saídas estruturadas ─────────────────────────────────────────── */
+/* ─── Saídas estruturadas ───────────────────────────────────────────
+ * Campos categóricos são strings livres no "fio" (o SDK converte enums em
+ * dicas de descrição); o servidor normaliza para os valores permitidos.
+ */
 
-export const analysisSchema = z.object({
+const oneOf = <T extends string>(values: readonly T[]) => z.string().describe(`Exatamente um de: ${values.map((v) => `"${v}"`).join(", ")}`);
+
+export const OPPORTUNITY_CATEGORIES = ["automation", "website", "agent", "support", "digital"] as const;
+export const IMPACT_LEVELS = ["alto", "médio", "baixo"] as const;
+export const COMPLEXITY_LEVELS = ["alta", "média", "baixa"] as const;
+export const IMPROVEMENT_KINDS = ["role", "context", "task", "constraints", "format", "examples", "quality"] as const;
+
+/** Normaliza uma string do modelo para um valor permitido (com fallback). */
+export function normalizeOneOf<T extends string>(value: string, values: readonly T[], fallback: T): T {
+  const clean = (s: string) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase();
+  return values.find((v) => clean(v) === clean(value)) ?? fallback;
+}
+
+export const analysisWireSchema = z.object({
   segment: z.string().describe("Segmento do negócio identificado, em poucas palavras"),
   summary: z.string().describe("Diagnóstico em 1-2 frases"),
   opportunities: z
     .array(
       z.object({
         title: z.string(),
-        category: z.enum(["automation", "website", "agent", "support", "digital"]),
+        category: oneOf(OPPORTUNITY_CATEGORIES),
         description: z.string(),
-        impact: z.enum(["alto", "médio", "baixo"]),
-        complexity: z.enum(["alta", "média", "baixa"]),
+        impact: oneOf(IMPACT_LEVELS),
+        complexity: oneOf(COMPLEXITY_LEVELS),
       }),
     )
     .describe("4 a 6 oportunidades"),
@@ -39,7 +55,16 @@ export const analysisSchema = z.object({
   flow: z.array(z.string()).describe("4 a 5 etapas de um fluxo de automação de atendimento"),
   nextStep: z.string().describe("Primeiro passo recomendado"),
 });
-export type Analysis = z.infer<typeof analysisSchema>;
+type AnalysisWire = z.infer<typeof analysisWireSchema>;
+export interface Analysis extends Omit<AnalysisWire, "opportunities"> {
+  opportunities: Array<{
+    title: string;
+    category: (typeof OPPORTUNITY_CATEGORIES)[number];
+    description: string;
+    impact: (typeof IMPACT_LEVELS)[number];
+    complexity: (typeof COMPLEXITY_LEVELS)[number];
+  }>;
+}
 
 export const conceptSchema = z.object({
   projectName: z.string(),
@@ -56,19 +81,23 @@ export const conceptSchema = z.object({
 });
 export type Concept = z.infer<typeof conceptSchema>;
 
-export const promptLabSchema = z.object({
+export const promptLabWireSchema = z.object({
   engineeredPrompt: z.string(),
   improvements: z
     .array(
       z.object({
-        kind: z.enum(["role", "context", "task", "constraints", "format", "examples", "quality"]),
+        kind: oneOf(IMPROVEMENT_KINDS),
         label: z.string(),
         description: z.string(),
       }),
     )
     .describe("4 a 6 melhorias aplicadas"),
 });
-export type PromptLab = z.infer<typeof promptLabSchema>;
+export type PromptLabWire = z.infer<typeof promptLabWireSchema>;
+export interface PromptLab {
+  engineeredPrompt: string;
+  improvements: Array<{ kind: (typeof IMPROVEMENT_KINDS)[number]; label: string; description: string }>;
+}
 
 export const briefSchema = z.object({
   title: z.string(),

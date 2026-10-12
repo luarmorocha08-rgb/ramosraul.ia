@@ -120,7 +120,7 @@ export default function Capabilities() {
               )}
             >
               <div className="relative flex flex-col p-7 md:p-10">
-                <span className="text-outline pointer-events-none absolute -left-2 -top-6 font-display text-[9rem] font-bold leading-none opacity-40" aria-hidden>
+                <span className="text-outline pointer-events-none absolute -left-1 -top-3 font-display text-[9rem] font-bold leading-none opacity-40" aria-hidden>
                   {s.index}
                 </span>
                 <p className="kicker relative mt-10">{s.kicker}</p>

@@ -174,7 +174,7 @@ export default function Orchestration() {
                 const live = current && ((current.from === a && current.to === b) || (current.from === b && current.to === a));
                 return (
                   <g key={`${a}-${b}`}>
-                    <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={on ? "#75E66B" : "rgb(241 238 232 / .12)"} strokeWidth={live ? 0.5 : 0.25} vectorEffect="non-scaling-stroke" strokeDasharray={on ? undefined : "1 1.5"} />
+                    <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={on ? "#75E66B" : "rgb(241 238 232 / .12)"} strokeWidth={live ? 2 : 1} vectorEffect="non-scaling-stroke" strokeDasharray={on ? undefined : "1 1.5"} />
                     {live && (
                       <circle r="0.9" fill="#75E66B">
                         <animateMotion dur="1.2s" repeatCount="indefinite" path={`M${pos(current.from)[0]},${pos(current.from)[1]} L${pos(current.to)[0]},${pos(current.to)[1]}`} />

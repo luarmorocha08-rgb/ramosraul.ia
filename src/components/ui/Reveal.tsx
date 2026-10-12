@@ -28,10 +28,12 @@ export default function Reveal({ children, as = "div", className, stagger, delay
     }
     const { gsap } = getGsap();
     gsap.set(el, { opacity: 1 });
+    // blur é caro de pintar em telas pequenas: só no desktop
+    const blur = window.matchMedia("(min-width: 1024px)").matches ? "blur(8px)" : "blur(0px)";
     const ctx = gsap.context(() => {
       gsap.fromTo(
         targets,
-        { y, opacity: 0, filter: "blur(8px)" },
+        { y, opacity: 0, filter: blur },
         {
           y: 0,
           opacity: 1,

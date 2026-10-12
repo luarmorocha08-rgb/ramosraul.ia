@@ -103,6 +103,7 @@ export default function CommandPalette() {
           </span>
           <input
             ref={input}
+            autoFocus
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);

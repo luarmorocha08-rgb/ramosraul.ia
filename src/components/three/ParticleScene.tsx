@@ -198,7 +198,7 @@ function Particles({ count, reducedMotion }: ParticlesProps) {
     () => ({
       uTime: { value: 0 },
       uMix: { value: 1 },
-      uSize: { value: count > 9000 ? 2.3 : 2.9 },
+      uSize: { value: count > 9000 ? 2.7 : 3.2 },
       uPixelRatio: { value: Math.min(gl.getPixelRatio(), 2) },
       uPulse: { value: 0 },
       uMouse: { value: new THREE.Vector2(9, 9) },

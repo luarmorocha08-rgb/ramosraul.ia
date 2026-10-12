@@ -24,5 +24,5 @@ export function prefersReducedMotion() {
 export function bootDelay() {
   if (typeof document === "undefined") return 0;
   const boot = document.documentElement.dataset.boot;
-  return boot === "full" ? 2.75 : boot === "short" ? 1 : 0.15;
+  return boot === "full" ? 2.3 : boot === "short" ? 0.6 : 0.1;
 }

@@ -127,7 +127,7 @@ export default function LiveCode() {
               aria-pressed={stage === i}
               className={cn(
                 "rounded-full border px-3 py-1 font-mono text-[0.62rem] uppercase tracking-[0.14em] transition-colors",
-                i <= stage ? "border-signal/50 text-signal" : "border-line text-steel",
+                i <= stage ? "border-signal/50 text-signal" : "border-line text-steel-light",
                 i === stage && "bg-signal/10",
               )}
             >

@@ -162,14 +162,15 @@ export default function Terminal() {
   const complete = () => {
     const v = value.trim().toLowerCase();
     if (!v) return;
-    const all = [...Object.keys(COMMANDS), ...HIDDEN];
     if (v.startsWith("shape ")) {
       const part = v.slice(6);
       const m = SHAPES.find((s) => s.startsWith(part));
       if (m) setValue(`shape ${m}`);
       return;
     }
-    const matches = all.filter((k) => k.startsWith(v));
+    // easter eggs só completam quando nenhum comando visível combina
+    const visible = Object.keys(COMMANDS).filter((k) => k.startsWith(v));
+    const matches = visible.length ? visible : HIDDEN.filter((k) => k.startsWith(v));
     if (matches.length === 1) setValue(matches[0]! + (matches[0] === "shape" || matches[0] === "chat" ? " " : ""));
     else if (matches.length > 1) setLines((p) => [...p, L("muted", matches.join("   "))]);
   };

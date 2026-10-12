@@ -14,7 +14,7 @@ export default function ProjectCover({ project, className }: { project: Project;
     <svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" className={className} aria-hidden>
       <defs>
         <radialGradient id={`g-${id}`} cx="70%" cy="30%" r="80%">
-          <stop offset="0%" stopColor={a} stopOpacity=".35" />
+          <stop offset="0%" stopColor={a} stopOpacity=".22" />
           <stop offset="60%" stopColor={b} stopOpacity="1" />
           <stop offset="100%" stopColor="#0B0F12" />
         </radialGradient>

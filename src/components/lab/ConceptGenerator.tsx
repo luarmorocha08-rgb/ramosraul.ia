@@ -53,7 +53,7 @@ function Preview({ c }: { c: Concept }) {
         <span className="size-2 rounded-full bg-copper/70" />
         <span className="size-2 rounded-full bg-signal/70" />
         <span className="ml-3 truncate rounded-md bg-bone/5 px-3 py-0.5 font-mono text-[0.6rem] text-steel">
-          {c.projectName.toLowerCase().replace(/[^a-z0-9]+/g, "")}.com
+          {c.projectName.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "")}.com
         </span>
       </div>
       <div style={{ background: bg, color: text, fontFamily: font(c.typography.body) }} className="relative p-5 md:p-7">

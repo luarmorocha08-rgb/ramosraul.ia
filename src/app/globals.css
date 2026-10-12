@@ -11,7 +11,9 @@
   --color-signal-dim: #4fae47;
   --color-bone: #f1eee8;
   --color-copper: #c18b65;
-  --color-steel: #69716c;
+  /* cinza técnico da marca (#69716C) clareado para texto pequeno com contraste AA */
+  --color-steel: #848c87;
+  --color-steel-brand: #69716c;
   --color-steel-light: #9aa29d;
   --color-line: rgb(241 238 232 / 0.09);
   --color-danger: #ff7a6b;
