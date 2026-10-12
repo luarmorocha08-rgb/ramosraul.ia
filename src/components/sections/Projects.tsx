@@ -15,7 +15,7 @@ import ProjectCover from "./ProjectCover";
 
 function Cover({ project, className }: { project: Project; className?: string }) {
   return project.image ? (
-    <Image src={project.image} alt="" fill sizes="(min-width:1024px) 60vw, 100vw" className={cn("object-cover", className)} />
+    <Image src={project.image} alt="" fill sizes="(min-width:1024px) 60vw, 100vw" className={cn("object-cover object-top", className)} />
   ) : (
     <ProjectCover project={project} className={cn("absolute inset-0 size-full", className)} />
   );
@@ -63,6 +63,7 @@ function ProjectDialog({ project, onClose }: { project: Project; onClose: () => 
         <div className="p-6 md:p-10">
           <div className="flex flex-wrap items-center gap-3">
             <span className="kicker">{project.category}</span>
+            <span className="text-xs text-bone/50">{project.context}</span>
             {project.isDemo && <DemoTag />}
           </div>
           <h3 className="mt-3 font-display text-4xl font-semibold tracking-tight">{project.name}</h3>
@@ -84,7 +85,7 @@ function ProjectDialog({ project, onClose }: { project: Project; onClose: () => 
           <div className="mt-8 flex flex-wrap gap-3">
             {project.demoUrl && (
               <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">
-                Ver demonstração ↗
+                Ver projeto ao vivo ↗
               </a>
             )}
             {project.caseStudyUrl && (
@@ -144,11 +145,7 @@ export default function Projects() {
           kicker="Selected Work"
           title="Selected"
           accent="work."
-          description={
-            <>
-              Projetos e conceitos que mostram o tipo de solução que desenvolvo. <span className="text-copper">Os itens marcados como conceito demonstrativo ilustram possibilidades e serão substituídos por cases reais.</span>
-            </>
-          }
+          description="Sites, catálogos e ferramentas que desenvolvi para negócios reais — cada um com uma experiência própria."
         />
 
         <Reveal className="mb-10 flex flex-wrap gap-2">
@@ -183,6 +180,7 @@ export default function Projects() {
                   <div className="mb-4 flex flex-wrap items-center gap-3">
                     <span className="font-mono text-xs text-signal">FEATURED</span>
                     <span className="kicker">{featured.category}</span>
+                    <span className="text-xs text-bone/55">{featured.context}</span>
                     {featured.isDemo && <DemoTag />}
                   </div>
                   <h3 className="font-display text-[clamp(2.5rem,7vw,6.5rem)] font-semibold leading-[0.9] tracking-[-0.045em]">{featured.name}</h3>
@@ -215,6 +213,7 @@ export default function Projects() {
                       <span className="font-mono text-xs text-steel transition-colors group-hover:text-signal">→</span>
                     </div>
                     <h3 className="mt-2 font-display text-2xl font-semibold tracking-tight">{p.name}</h3>
+                    <p className="mt-1 text-xs text-bone/45">{p.context}</p>
                     <p className="mt-2 line-clamp-2 text-sm text-bone/60">{p.description}</p>
                     <div className="mt-4 flex flex-wrap gap-1.5">
                       {p.tech.slice(0, 4).map((t) => (

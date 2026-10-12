@@ -3,7 +3,7 @@
  * então podem ser lidos tanto no servidor quanto no cliente.
  */
 const whatsapp = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "").replace(/\D/g, "");
-const email = (process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "").trim();
+const email = (process.env.NEXT_PUBLIC_CONTACT_EMAIL || "luarmorocha08@gmail.com").trim();
 
 export const site = {
   name: "RAUL RAMOS",

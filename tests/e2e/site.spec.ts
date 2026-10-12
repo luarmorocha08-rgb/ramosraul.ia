@@ -142,9 +142,10 @@ test("projeto abre detalhes acessíveis e fecha com Esc", async ({ page }) => {
   await open(page);
   await page.locator("#projects").scrollIntoViewIfNeeded();
   await page.getByRole("button", { name: /Abrir projeto em destaque/ }).click();
-  const dialog = page.getByRole("dialog", { name: "Atlas Concierge" });
+  const dialog = page.getByRole("dialog", { name: "França Jóias" });
   await expect(dialog).toBeVisible();
-  await expect(dialog.getByText("Conceito demonstrativo")).toBeVisible();
+  await expect(dialog.getByText("Joalheria · Marília/SP")).toBeVisible();
+  await expect(dialog.getByText("Conceito demonstrativo")).toHaveCount(0);
   await page.keyboard.press("Escape");
   await expect(dialog).toHaveCount(0);
 });

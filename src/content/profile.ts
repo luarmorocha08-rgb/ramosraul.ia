@@ -20,7 +20,7 @@ export const profile = {
    * Ex.: "/images/raul.jpg". Enquanto for null, o site exibe um retrato
    * holográfico gerado por código.
    */
-  photo: null as string | null,
+  photo: "/images/raul.jpg" as string | null,
   photoAlt: "Raul Ramos, AI Developer & Creative Technologist",
 
   headline: "Transformo problemas reais em soluções digitais inteligentes.",

@@ -41,7 +41,7 @@ Tudo é opcional. Sem credenciais, cada recurso entra em um modo honesto e clara
 | `AI_RATE_LIMIT_PER_MINUTE` / `AI_DAILY_REQUESTS_PER_SESSION` / `AI_GLOBAL_DAILY_LIMIT` | limites de uso e custo | padrões 8 / 40 / 2000 |
 | `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` | grava os leads do formulário | o formulário valida, **não finge enviar** e oferece copiar a mensagem para WhatsApp/e-mail/Instagram |
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` | botão de WhatsApp (só dígitos, ex. `5511999999999`) | botão oculto |
-| `NEXT_PUBLIC_CONTACT_EMAIL` | botão de e-mail | botão oculto |
+| `NEXT_PUBLIC_CONTACT_EMAIL` | botão de e-mail | usa `luarmorocha08@gmail.com` |
 | `NEXT_PUBLIC_SITE_URL` | URL canônica, Open Graph e sitemap | `http://localhost:3000` |
 
 ### Ativando a IA (Claude API)
@@ -66,15 +66,15 @@ Todo o texto editável fica em `src/content/` — sem tocar nos componentes:
 | Arquivo | Conteúdo |
 |---|---|
 | `profile.ts` | foto, biografia, pilares e **linha do tempo** |
-| `projects.ts` | projetos (os atuais são **conceitos demonstrativos** — `isDemo: true`) |
+| `projects.ts` | projetos reais (capas em `public/images/projects/`; preencha `demoUrl` com o link publicado) |
 | `services.ts` | os 6 serviços da seção Capabilities |
 | `stack.ts` | tecnologias do ecossistema 3D e seus exemplos de uso |
 | `process.ts` | etapas do workflow e diferenciais |
 | `src/config/site.ts` | nome, slogans, Instagram, links |
 
-**Fotografia:** coloque a imagem em `public/images/raul.jpg` e defina `photo: "/images/raul.jpg"` em `profile.ts`. Até lá, a seção About exibe um retrato holográfico gerado por código.
+**Fotografia:** `public/images/raul.jpg` (definida em `profile.ts`). Com `photo: null`, a seção About exibe um retrato holográfico gerado por código.
 
-**Projetos reais:** troque `isDemo` para `false`, preencha `demoUrl`/`caseStudyUrl` e, se quiser, `image`. O selo "Conceito demonstrativo" some automaticamente.
+**Projetos:** para adicionar um novo, inclua um item em `projects.ts` com uma captura 1440×900 em `public/images/projects/`. Itens com `isDemo: true` exibem o selo "Conceito demonstrativo".
 
 O site não contém clientes, depoimentos, métricas ou certificações inventadas — mantenha assim ao editar.
 
