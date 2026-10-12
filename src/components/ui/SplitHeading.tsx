@@ -33,6 +33,9 @@ export default function SplitHeading({
   useEffect(() => {
     const el = ref.current;
     if (!el || prefersReducedMotion()) return;
+    // Na intro completa, o título já está pintado por baixo dela e é revelado
+    // pela expansão da esfera — sem esconder o texto (melhor LCP).
+    if (trigger === "load" && document.documentElement.dataset.boot === "full") return;
     const { gsap } = getGsap();
     const inner = el.querySelectorAll<HTMLElement>("[data-line-inner]");
     const ctx = gsap.context(() => {

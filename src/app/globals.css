@@ -351,6 +351,24 @@ html.js-motion [data-reveal] {
   opacity: 0;
 }
 
+/* Boot sequence: a esfera se expande abrindo um "buraco" que revela a página */
+@property --boot-hole {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+.boot-overlay {
+  --boot-hole: 0%;
+  mask-image: radial-gradient(circle at 50% 50%, transparent var(--boot-hole), #000 calc(var(--boot-hole) + 2%));
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent var(--boot-hole), #000 calc(var(--boot-hole) + 2%));
+  transition: --boot-hole 0.9s var(--ease-quart), opacity 0.9s ease;
+}
+.boot-overlay[data-phase="exit"] {
+  --boot-hole: 150%;
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* Boot sequence: visitantes recorrentes ou sem motion não veem a intro */
 html[data-boot="skip"] #boot-sequence {
   display: none;
@@ -386,4 +404,45 @@ html[data-boot="skip"] #boot-sequence {
 @keyframes feed-out {
   0%, 100% { transform: translateX(-8px); opacity: 0.35; }
   50% { transform: translateX(0); opacity: 1; }
+}
+.boot-overlay canvas {
+  transition: transform 0.9s var(--ease-quart);
+}
+.boot-overlay[data-phase="exit"] canvas {
+  transform: scale(2.6);
+}
+
+/* Iluminação ambiente por seção (transições suaves de luz, identidade escura) */
+.ambient-light {
+  position: absolute;
+  width: 70vmax;
+  height: 70vmax;
+  left: calc(50% - 35vmax);
+  top: calc(50% - 35vmax);
+  border-radius: 50%;
+  filter: blur(40px);
+  transition:
+    transform 1.8s var(--ease-expo),
+    opacity 1.8s var(--ease-expo);
+  will-change: transform, opacity;
+}
+.ambient-light[data-tone="signal"] {
+  background: radial-gradient(circle, rgb(117 230 107 / 0.13), transparent 62%);
+}
+.ambient-light[data-tone="copper"] {
+  background: radial-gradient(circle, rgb(193 139 101 / 0.12), transparent 62%);
+}
+
+/* Transição de página */
+.page-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 94;
+  pointer-events: none;
+  background: var(--color-ink);
+  box-shadow: 0 2px 0 rgb(117 230 107 / 0.6), 0 0 60px rgb(117 230 107 / 0.25);
+  animation: curtain-up 0.85s var(--ease-quart) 0.05s forwards;
+}
+@keyframes curtain-up {
+  to { transform: translateY(-102%); }
 }

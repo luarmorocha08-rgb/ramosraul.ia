@@ -128,11 +128,8 @@ export default function BootSequence() {
       role="status"
       aria-live="polite"
       aria-label="Carregando experiência"
-      className="fixed inset-0 z-[95] bg-ink transition-[clip-path,opacity] duration-[900ms] ease-[var(--ease-quart)]"
-      style={{
-        clipPath: phase === "exit" ? "circle(0% at 50% 50%)" : "circle(150% at 50% 50%)",
-        opacity: phase === "exit" ? 0.6 : 1,
-      }}
+      data-phase={phase}
+      className="boot-overlay fixed inset-0 z-[95] bg-ink"
     >
       <canvas ref={canvas} className="absolute inset-0 size-full" aria-hidden />
 

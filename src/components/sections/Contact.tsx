@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { site } from "@/config/site";
-import { budgetRanges, projectTypes } from "@/lib/contact";
+import { budgetRanges, projectTypes } from "@/lib/contact-options";
 import type { AiResult, Brief } from "@/lib/ai/schemas";
 import { on } from "@/lib/events";
 import { cn } from "@/lib/utils";

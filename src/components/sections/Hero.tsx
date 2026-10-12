@@ -72,7 +72,12 @@ export default function Hero() {
     if (!el || prefersReducedMotion()) return;
     const { gsap } = getGsap();
     const ctx = gsap.context(() => {
-      gsap.from("[data-hero-fade]", { opacity: 0, y: 24, duration: 1.2, ease: "expo.out", stagger: 0.08, delay: bootDelay() + 0.25 });
+      if (document.documentElement.dataset.boot === "full") {
+        // revelado pela intro: só um leve "assentar" de profundidade, sem ocultar conteúdo
+        gsap.from("[data-hero-content]", { scale: 1.06, duration: 1.6, ease: "expo.out", delay: bootDelay() - 0.2, clearProps: "scale" });
+      } else {
+        gsap.from("[data-hero-fade]", { opacity: 0, y: 24, duration: 1.2, ease: "expo.out", stagger: 0.08, delay: bootDelay() + 0.25 });
+      }
       gsap.to("[data-hero-content]", {
         yPercent: -18,
         opacity: 0,
