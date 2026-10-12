@@ -113,6 +113,7 @@ export default function CommandPalette() {
             placeholder="Para onde vamos? Digite um comando ou pergunta…"
             className="h-14 flex-1 bg-transparent text-bone placeholder:text-steel focus:outline-none"
             role="combobox"
+            aria-label="Buscar comando ou perguntar à IA"
             aria-expanded="true"
             aria-controls="palette-list"
             aria-activedescendant={results[index] ? `cmd-${results[index].id}` : undefined}

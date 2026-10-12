@@ -1,4 +1,3 @@
-import "server-only";
 
 /**
  * Rate limiting em memória (janela deslizante).

@@ -22,6 +22,8 @@ npm run dev                  # http://localhost:3000
 | `npm run build` / `npm start` | build e servidor de produção |
 | `npm run lint` | ESLint (regras do Next + React Compiler) |
 | `npm run typecheck` | TypeScript estrito |
+| `npm test` | testes unitários + e2e (Playwright, desktop e mobile) — requer `npm run build` antes |
+| `npm run test:unit` / `npm run test:e2e` | só uma das suítes |
 
 Requer Node.js 20.9+.
 
@@ -108,6 +110,8 @@ lib/ai/            cliente, prompts, schemas, guard (limites), modo demo
 
 > Os limites de uso ficam em memória por instância. Em hospedagem serverless com várias instâncias, troque o `store` de `src/lib/rate-limit.ts` por um backend compartilhado (ex.: Upstash Redis).
 
+**Testes** — `tests/unit` cobre os motores de demonstração, a normalização das saídas da IA, validação do formulário, sanitização e rate limit; `tests/e2e` cobre o contrato das APIs e os fluxos reais (intro, AI Lab, terminal, command palette, formulário, menu mobile, modal de projeto, privacidade) em desktop e mobile. O CI (`.github/workflows/ci.yml`) roda lint, typecheck, build e todos os testes.
+
 **Performance** — cena 3D carregada sob demanda depois da intro, contagem de partículas e DPR adaptados ao dispositivo, render pausado com a aba oculta, loops de canvas pausados fora da tela, ferramentas do lab com code splitting, fallback estático sem WebGL.
 
 ### Resultados medidos (Lighthouse 12, perfil mobile, neste ambiente)
@@ -117,6 +121,7 @@ lib/ai/            cliente, prompts, schemas, guard (limites), modo demo
 | Accessibility | 100 |
 | Best Practices | 100 |
 | SEO | 100 |
-| Performance | 61 com WebGL por software (SwiftShader, sem GPU) · ~75–79 sem WebGL |
+| Performance — desktop | **96** sem WebGL · 88 com WebGL por software (LCP 0,7 s, CLS 0) |
+| Performance — mobile | ~75–79 sem WebGL · ~55–63 com WebGL por software |
 
-A nota de performance aqui é pessimista: sem GPU, o WebGL roda na CPU e conta como bloqueio da thread principal. O LCP da primeira visita também inclui a intro cinematográfica (pedida no briefing); visitantes recorrentes veem a versão curta. Meça em um aparelho real antes de otimizar mais.
+Este ambiente não tem GPU: o WebGL roda na CPU (SwiftShader) e conta como bloqueio da thread principal, então os números com WebGL são pessimistas. No mobile, o limitante é o JavaScript inicial (~280 KB gzip: React, GSAP e as seções interativas) sob a simulação de CPU 4× mais lenta do Lighthouse. A intro já não atrasa o conteúdo: o hero é pintado por baixo dela e revelado pela esfera. Meça em um aparelho real antes de otimizar mais.
