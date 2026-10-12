@@ -108,7 +108,7 @@ test("command palette abre com Ctrl+K e navega", async ({ page, isMobile }) => {
   await expect.poll(() => page.evaluate(() => Math.abs(document.getElementById("contact")!.getBoundingClientRect().top))).toBeLessThan(150);
 });
 
-test("formulário valida campos e não finge envio sem backend", async ({ page }) => {
+test("formulário valida campos e, sem backend, abre o e-mail com o pedido pronto", async ({ page }) => {
   await open(page);
   await page.locator("#contact").scrollIntoViewIfNeeded();
   await page.getByRole("button", { name: /Enviar projeto/ }).click();
@@ -124,7 +124,10 @@ test("formulário valida campos e não finge envio sem backend", async ({ page }
   await page.check("#cf-consent");
   await page.waitForTimeout(3100); // tempo mínimo anti-spam
   await page.getByRole("button", { name: /Enviar projeto/ }).click();
-  await expect(page.getByText("O envio online ainda não está ativo neste site.")).toBeVisible();
+  await expect(page.getByText("Falta só um clique: enviar o e-mail.")).toBeVisible();
+  const mailto = await page.getByRole("link", { name: "Abrir e-mail novamente" }).getAttribute("href");
+  expect(mailto).toMatch(/^mailto:luarmorocha08@gmail\.com\?subject=/);
+  expect(decodeURIComponent(mailto!)).toContain("Maria Teste (maria@exemplo.com)");
 });
 
 test("menu mobile abre, navega e fecha", async ({ page, isMobile }) => {

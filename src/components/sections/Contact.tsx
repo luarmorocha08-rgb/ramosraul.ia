@@ -134,7 +134,9 @@ export default function Contact() {
         return;
       }
       if (data.reason === "unconfigured") {
+        // sem banco configurado: abre o e-mail do visitante com o pedido pronto
         setStatus("unconfigured");
+        if (mailtoHref) window.location.href = mailtoHref;
         return;
       }
       if (data.fieldErrors) setErrors(data.fieldErrors);
@@ -152,7 +154,17 @@ export default function Contact() {
     site.email && { label: "E-mail", href: site.email.url, detail: site.email.address, external: false },
   ].filter(Boolean) as Array<{ label: string; href: string; detail: string; external: boolean }>;
 
-  const messageText = `Olá, Raul! Sou ${form.name || "[seu nome]"} (${form.email || "[seu e-mail]"}).\nTipo de projeto: ${form.projectType || "-"}\n\n${form.description}`;
+  const messageText = [
+    `Olá, Raul! Sou ${form.name || "[seu nome]"} (${form.email || "[seu e-mail]"}).`,
+    `Tipo de projeto: ${form.projectType || "-"}`,
+    ...(form.budget ? [`Orçamento estimado: ${form.budget}`] : []),
+    "",
+    form.description,
+  ].join("\n");
+  const mailtoHref = site.email
+    ? `${site.email.url}?subject=${encodeURIComponent(`Projeto via site — ${form.projectType || "contato"}`)}&body=${encodeURIComponent(messageText)}`
+    : null;
+  const [copied, setCopied] = useState(false);
 
   return (
     <section id="contact" aria-label="Contato" className="relative overflow-hidden pb-16 pt-28 md:pt-40">
@@ -333,17 +345,39 @@ export default function Contact() {
 
               {status === "unconfigured" && (
                 <div className="md:col-span-2 rounded-2xl border border-dashed border-copper/50 bg-copper/5 p-5 text-sm" role="alert">
-                  <p className="font-medium text-copper">O envio online ainda não está ativo neste site.</p>
-                  <p className="mt-1 text-bone/70">Sua mensagem não foi enviada. Copie o texto abaixo e fale diretamente por um dos canais:</p>
+                  <p className="font-medium text-copper">Falta só um clique: enviar o e-mail.</p>
+                  <p className="mt-1 text-bone/70">
+                    Abrimos o seu aplicativo de e-mail com o pedido já escrito{site.email ? <> para <strong className="text-bone">{site.email.address}</strong></> : null}. A mensagem só chega quando você clicar em enviar lá.
+                    Não abriu? Use uma das opções abaixo.
+                  </p>
                   <div className="mt-4 flex flex-wrap gap-2">
-                    <button type="button" className="btn-ghost !min-h-10 !text-sm" onClick={() => navigator.clipboard?.writeText(messageText)}>
-                      Copiar mensagem
-                    </button>
-                    {channels.map((c) => (
-                      <a key={c.label} href={c.label === "WhatsApp" ? `${c.href.split("?")[0]}?text=${encodeURIComponent(messageText)}` : c.label === "E-mail" ? `${c.href}?subject=${encodeURIComponent("Projeto via site")}&body=${encodeURIComponent(messageText)}` : c.href} target={c.external ? "_blank" : undefined} rel={c.external ? "noopener noreferrer" : undefined} className="btn-ghost !min-h-10 !text-sm">
-                        {c.label}
+                    {mailtoHref && (
+                      <a href={mailtoHref} className="btn-primary !min-h-10 !text-sm">
+                        Abrir e-mail novamente
                       </a>
-                    ))}
+                    )}
+                    <button
+                      type="button"
+                      className="btn-ghost !min-h-10 !text-sm"
+                      onClick={() =>
+                        navigator.clipboard
+                          ?.writeText(messageText)
+                          .then(() => {
+                            setCopied(true);
+                            setTimeout(() => setCopied(false), 1800);
+                          })
+                          .catch(() => {})
+                      }
+                    >
+                      {copied ? "Copiado ✓" : "Copiar mensagem"}
+                    </button>
+                    {channels
+                      .filter((c) => c.label !== "E-mail")
+                      .map((c) => (
+                        <a key={c.label} href={c.label === "WhatsApp" ? `${c.href.split("?")[0]}?text=${encodeURIComponent(messageText)}` : c.href} target="_blank" rel="noopener noreferrer" className="btn-ghost !min-h-10 !text-sm">
+                          {c.label}
+                        </a>
+                      ))}
                   </div>
                 </div>
               )}

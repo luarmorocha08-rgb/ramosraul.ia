@@ -39,7 +39,7 @@ Tudo é opcional. Sem credenciais, cada recurso entra em um modo honesto e clara
 | `ANTHROPIC_MODEL` | modelo (padrão `claude-opus-5-5`) | — |
 | `ANTHROPIC_EFFORT` | `low` \| `medium` \| `high` (padrão `low`, mais rápido e barato) | — |
 | `AI_RATE_LIMIT_PER_MINUTE` / `AI_DAILY_REQUESTS_PER_SESSION` / `AI_GLOBAL_DAILY_LIMIT` | limites de uso e custo | padrões 8 / 40 / 2000 |
-| `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` | grava os leads do formulário | o formulário valida, **não finge enviar** e oferece copiar a mensagem para WhatsApp/e-mail/Instagram |
+| `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` | grava os leads do formulário | o formulário valida e **abre o e-mail do visitante com o pedido pronto** para luarmorocha08@gmail.com (a mensagem só chega quando ele envia) |
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` | botão de WhatsApp (só dígitos, ex. `5511999999999`) | botão oculto |
 | `NEXT_PUBLIC_CONTACT_EMAIL` | botão de e-mail | usa `luarmorocha08@gmail.com` |
 | `NEXT_PUBLIC_SITE_URL` | URL canônica, Open Graph e sitemap | `http://localhost:3000` |
@@ -53,7 +53,7 @@ A chave só é usada no servidor (`src/lib/ai/client.ts`, marcado com `server-on
 
 ### Ativando o formulário (Supabase)
 
-1. Crie um projeto no [Supabase](https://supabase.com/).
+1. Crie um projeto no [Supabase](https://supabase.com/). No plano gratuito cabem 2 projetos ativos — pause um ou use o plano pago.
 2. Rode `supabase/migrations/0001_create_leads.sql` (SQL Editor ou `supabase db push`). A tabela tem **RLS ligado e nenhuma policy pública** — só o servidor grava.
 3. Defina `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` (Settings → API). Nunca exponha a service role no navegador.
 
