@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>46 Prompts para Sites de até R$ 5 mil · ramosraul.ia</title>
+<meta name="description" content="46 prompts completos para criar sites de até R$ 5 mil com IA, separados por nicho, com tutorial ilustrado. Por Raul Ramos · ramosraul.ia">
+<meta property="og:type" content="website">
+<meta property="og:title" content="46 Prompts para Sites de até R$ 5 mil">
+<meta property="og:description" content="46 prompts completos para criar sites de até R$ 5 mil com IA, separados por nicho, com tutorial ilustrado. Por Raul Ramos · ramosraul.ia">
+<meta property="og:image" content="https://ramosraul-ia.vercel.app/prompts/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0d0f14">
+<meta property="og:url" content="https://ramosraul-ia.vercel.app/prompts">
+<link rel="canonical" href="https://ramosraul-ia.vercel.app/prompts">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: página escura editorial da ramosraul.ia — faixas alternadas, serifa com itálico dourado, provas reais do PDF */
+:root{
+  --bg:#0d0f14; --band:#11141b; --card:#151922; --line:#252b37; --line2:#323a49;
+  --fg:#ECE7DF; --muted:#9AA0AB; --dim:#6f7581; --gold:#D6A76C; --gold-ink:#17120b; --green:#4ADE80; --red:#F87171;
+  --serif:"Playfair Display",Lora,Georgia,serif; --sans:Manrope,Inter,system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.01em;text-wrap:balance;margin:0}
+em{font-family:var(--serif);font-style:italic;color:var(--gold);font-weight:500}
+p{margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.band{padding-block:88px}
+.band.alt{background:var(--band);border-block:1px solid var(--line)}
+.eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px;display:block}
+h2{font-size:clamp(30px,4.2vw,44px);line-height:1.15}
+.lede{color:var(--muted);max-width:620px;margin-top:16px}
+.tag{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(74,222,128,.45);color:var(--green);font-size:11px;letter-spacing:.18em;padding:6px 14px;border-radius:99px;font-weight:700;text-transform:uppercase}
+.tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:99px;padding:15px 28px;font-weight:700;font-size:15px;text-decoration:none;transition:transform .15s ease,background .15s ease;font-family:var(--sans)}
+.btn-gold{background:var(--gold);color:var(--gold-ink)}
+.btn-gold:hover{background:#e3b57b;transform:translateY(-1px)}
+.btn-ghost{border:1px solid var(--line2);color:var(--fg)}
+.btn-ghost:hover{border-color:var(--gold)}
+.btn:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* nav */
+.nav{position:relative;z-index:5;display:flex;justify-content:space-between;align-items:center;padding-block:22px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;text-decoration:none}
+.brand .av{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#6b5234,#1c1610);border:1px solid var(--gold);display:grid;place-items:center;font-family:var(--serif);color:var(--gold);font-size:13px}
+.brand .dot{color:var(--gold)}
+.nav .btn{padding:10px 20px;font-size:13px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;padding-block:56px 96px}
+.hero h1{font-size:clamp(38px,5.6vw,64px);line-height:1.06;margin:22px 0 22px}
+.hero .lede{font-size:17px;margin:0}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.stats{display:flex;flex-wrap:wrap;gap:28px;margin-top:30px;color:var(--muted);font-size:14px}
+.stats b{color:var(--fg);font-size:20px;margin-right:6px;font-variant-numeric:tabular-nums}
+.book{position:relative;justify-self:center;width:min(380px,100%)}
+.book::before{content:"";pointer-events:none;position:absolute;inset:-18% -25% -10%;background:radial-gradient(circle at 60% 35%,rgba(214,167,108,.28),transparent 62%);z-index:0}
+.book img{position:relative;z-index:1;width:100%;max-width:100%;height:auto;border-radius:6px;transform:perspective(1200px) rotateY(-12deg) rotateX(3deg);box-shadow:-30px 40px 70px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06);transition:transform .5s ease}
+.book:hover img{transform:perspective(1200px) rotateY(-4deg) rotateX(1deg)}
+
+/* dores */
+.pains{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.pain{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px}
+.pain q{font-family:var(--serif);font-size:19px;display:block;margin-bottom:10px;quotes:"“" "”"}
+.pain p{color:var(--muted);font-size:14.5px}
+
+/* conteúdo */
+.contents{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:44px}
+.contents h3{font-family:var(--sans);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:6px}
+.list{list-style:none;margin:0;padding:0}
+.list li{display:grid;grid-template-columns:40px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.list .n{font-family:var(--serif);color:var(--gold);font-size:20px;line-height:1.2;font-variant-numeric:tabular-nums}
+.list b{display:block;font-size:15px}
+.list span{color:var(--muted);font-size:14px}
+
+/* prévias */
+.previews{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+.preview figure{margin:0}
+.preview img{width:100%;max-width:100%;height:auto;border-radius:8px;border:1px solid var(--line2);box-shadow:0 24px 50px rgba(0,0,0,.45);display:block}
+.preview figcaption{color:var(--muted);font-size:14px;margin-top:12px}
+
+/* categorias */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+.cat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:8px}
+.cat .top{display:flex;justify-content:space-between;align-items:baseline}
+.cat .num{font-family:var(--serif);color:var(--gold);font-size:15px;font-variant-numeric:tabular-nums}
+.cat .cnt{font-size:12px;color:var(--green);font-weight:600}
+.cat b{font-size:16px}
+.cat span.ex{color:var(--muted);font-size:13px;line-height:1.45}
+.cat.more{border-style:dashed;justify-content:center;background:transparent}
+.cat.more b{font-family:var(--serif);font-weight:500;font-size:18px}
+
+/* faixas */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.tier{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
+.tier.hl{border-color:rgba(214,167,108,.5);background:linear-gradient(160deg,#221d16,var(--card) 60%)}
+.tier .price{font-family:var(--serif);font-size:30px;margin:16px 0 8px;font-variant-numeric:tabular-nums}
+.tier.hl .price{color:var(--gold)}
+.tier p{color:var(--muted);font-size:14.5px}
+.tier .ex{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted)}
+.tier .ex b{color:var(--fg);font-weight:600}
+.math{margin-top:20px;color:var(--muted);font-size:15px;max-width:700px}
+.math b{color:var(--fg)}
+
+/* fit */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fit .box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px}
+.fit h3{font-size:22px;margin-bottom:16px}
+.chk{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.chk li{position:relative;padding-left:26px;color:var(--muted);font-size:15px}
+.chk li::before{content:"✓";position:absolute;left:0;top:0;color:var(--green);font-weight:700}
+.chk.no li::before{content:"✕";color:var(--red)}
+
+/* autor */
+.author{display:flex;gap:32px;align-items:center;max-width:820px;margin:0 auto}
+.author .pic{flex:none;width:120px;height:120px;max-width:100%;border-radius:50%;border:2px solid var(--gold);object-fit:cover;background:#14100b;box-shadow:0 0 0 8px rgba(214,167,108,.08)}
+.author h3{font-size:28px;margin-bottom:10px}
+.author p{color:var(--muted);font-size:15.5px}
+.author a{display:inline-block;margin-top:12px;color:var(--gold);font-size:14px;text-underline-offset:3px}
+
+/* oferta */
+.offer{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;background:linear-gradient(135deg,#1e1a14,var(--card) 55%);border:1px solid rgba(214,167,108,.3);border-radius:20px;padding:44px}
+.offer h2{margin-bottom:22px}
+.pricebox{background:#0b0d11;border:1px solid var(--line);border-radius:16px;padding:32px;text-align:center}
+.pricebox .from{color:var(--muted);font-size:14px}
+.pricebox .from s{color:var(--dim)}
+.pricebox .big{font-family:var(--serif);font-size:clamp(40px,6vw,56px);line-height:1.05;margin:10px 0 6px}
+.pricebox .inst{color:var(--muted);font-size:13.5px}
+.pricebox .btn{width:100%;margin-top:22px;font-size:16px;padding:17px}
+.pricebox .note{color:var(--dim);font-size:12.5px;margin-top:12px}
+.guarantee{display:flex;gap:10px;align-items:center;justify-content:center;margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted)}
+.guarantee svg{flex:none}
+
+/* faq */
+.faq{max-width:760px;margin:40px auto 0}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;padding:20px 0;font-weight:600;font-size:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--gold);font-size:22px;line-height:1;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--muted);padding-bottom:20px;font-size:15px;max-width:660px}
+
+footer{border-top:1px solid var(--line);padding-block:28px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--dim)}
+footer .mid{letter-spacing:.24em;font-size:11px}
+footer a{color:var(--gold)}
+
+main{overflow-x:clip}
+.center{text-align:center}.center .lede{margin-inline:auto}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;gap:48px;padding-block:32px 72px}
+  .book{width:min(300px,80%)}
+  .contents,.offer,.fit{grid-template-columns:1fr}
+  .cats{grid-template-columns:repeat(2,1fr)}
+  .offer{padding:28px}
+}
+@media (max-width:720px){
+  .band{padding-block:64px}
+  .pains,.previews,.tiers{grid-template-columns:1fr}
+  .previews{max-width:380px}
+  .author{flex-direction:column;text-align:center}
+  footer .wrap{justify-content:center;text-align:center}
+}
+@media (max-width:420px){
+  .cats{grid-template-columns:1fr}
+  .stats{gap:18px}
+  .nav .btn{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.book img{transform:none}}
+</style>
+</head>
+<body>
+
+<header class="wrap nav">
+  <a class="brand" href="#topo"><span class="av">R</span><span>ramosraul<span class="dot">.ia</span></span></a>
+  <a class="btn btn-ghost" href="#comprar">Quero os prompts</a>
+</header>
+
+<main id="topo">
+  <section class="wrap hero">
+    <div>
+      <span class="tag">E-book · Prompts para sites</span>
+      <h1>Sites de <em>até R$ 5 mil,</em> criados com IA em uma tarde.</h1>
+      <p class="lede">46 prompts completos, separados por tipo de negócio — de pizzarias a clínicas — e um tutorial ilustrado mostrando quais imagens enviar para a IA e como refinar o resultado até ele ficar com cara de projeto premium.</p>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="#comprar">Quero criar sites premium</a>
+        <a class="btn btn-ghost" href="#conteudo">Ver o conteúdo</a>
+      </div>
+      <div class="stats"><span><b>67</b>páginas</span><span><b>46</b>prompts prontos</span><span><b>11</b>categorias</span></div>
+    </div>
+    <div class="book"><img src="/prompts/img/capa.webp" alt="Capa do e-book: 46 prompts para criar sites que valem até R$ 5 mil" width="440" height="622"></div>
+  </section>
+
+  <section class="band alt">
+    <div class="wrap">
+      <span class="eyebrow">Isso parece familiar?</span>
+      <h2>A IA cria o site em minutos. O difícil é ele <em>não parecer um template.</em></h2>
+      <div class="pains">
+        <div class="pain"><q>Ficou com cara de site de R$ 300.</q><p>Cores padrão, "bem-vindo ao nosso site" e nenhum botão que leve o cliente a comprar.</p></div>
+        <div class="pain"><q>Não sei o que escrever no prompt.</q><p>Você reescreve o pedido dez vezes e a IA continua entregando a mesma página genérica.</p></div>
+        <div class="pain"><q>Não sei quanto cobrar por isso.</q><p>Sem saber o que faz um site valer mais, você acaba cobrando pouco por um trabalho bom.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="conteudo">
+    <div class="wrap">
+      <span class="eyebrow">O que tem dentro</span>
+      <h2>Primeiro o método, <em>depois os prompts.</em></h2>
+      <div class="contents">
+        <div>
+          <h3>Parte 1 · Tutorial ilustrado</h3>
+          <ol class="list">
+            <li><span class="n">01</span><div><b>Como funciona o guia</b><span>Os 4 passos do prompt ao site publicado.</span></div></li>
+            <li><span class="n">02</span><div><b>A anatomia de um prompt de R$ 5 mil</b><span>As 8 partes que separam um site genérico de um premium.</span></div></li>
+            <li><span class="n">03</span><div><b>As imagens que você deve enviar</b><span>Logo, fotos reais, prints de referência e paleta, com exemplos.</span></div></li>
+            <li><span class="n">04</span><div><b>Imagem boa x imagem ruim</b><span>O que ajuda e o que atrapalha a IA a acertar o estilo.</span></div></li>
+            <li><span class="n">05</span><div><b>Enviando tudo para a IA</b><span>A conversa passo a passo e o prompt coringa de análise de imagens.</span></div></li>
+            <li><span class="n">06</span><div><b>Refinando em rodadas</b><span>12 prompts de ajuste para copiar e colar.</span></div></li>
+            <li><span class="n">07</span><div><b>Quanto cobrar</b><span>As 3 faixas de valor e o que entra em cada uma.</span></div></li>
+          </ol>
+        </div>
+        <div>
+          <h3>Parte 2 · 46 prompts prontos</h3>
+          <ol class="list">
+            <li><span class="n">⟶</span><div><b>Um prompt completo por página</b><span>Objetivo, identidade visual com cores em HEX, estrutura de seções, funcionalidades, tom dos textos e requisitos técnicos.</span></div></li>
+            <li><span class="n">⟶</span><div><b>Campos [EM DOURADO] para personalizar</b><span>Nome, cidade, WhatsApp e serviços. Troque e envie.</span></div></li>
+            <li><span class="n">⟶</span><div><b>Valor de referência em cada prompt</b><span>Landing page, site institucional ou site com sistema.</span></div></li>
+            <li><span class="n">⟶</span><div><b>Sugestões de upsell</b><span>O que oferecer a mais para aumentar o valor do projeto.</span></div></li>
+            <li><span class="n">⟶</span><div><b>Funciona em qualquer IA</b><span>Claude, ChatGPT, Lovable, v0, Bolt ou Cursor.</span></div></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band alt">
+    <div class="wrap">
+      <span class="eyebrow">Por dentro do guia</span>
+      <h2>Páginas reais <em>do e-book.</em></h2>
+      <p class="lede">Nada de lista solta de prompts. Cada página foi pensada para você abrir no celular, copiar e usar na hora.</p>
+      <div class="previews">
+        <figure class="preview"><img src="/prompts/img/tutorial-imagens.webp" alt="Página do tutorial com o kit de imagens para enviar à IA" loading="lazy" width="380" height="537"><figcaption>O kit de imagens que faz a IA acertar o estilo</figcaption></figure>
+        <figure class="preview"><img src="/prompts/img/tutorial-conversa.webp" alt="Página do tutorial simulando a conversa com a IA" loading="lazy" width="380" height="537"><figcaption>A conversa com a IA, passo a passo</figcaption></figure>
+        <figure class="preview"><img src="/prompts/img/prompt-pizzaria.webp" alt="Página com o prompt completo para pizzaria" loading="lazy" width="380" height="537"><figcaption>Prompt completo, com valor de referência</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <span class="eyebrow">11 categorias · 46 nichos</span>
+      <h2>Um prompt para cada <em>cliente que aparecer.</em></h2>
+      <div class="cats">
+        <div class="cat"><div class="top"><span class="num">01</span><span class="cnt">6 prompts</span></div><b>Alimentação</b><span class="ex">Pizzaria, hamburgueria, cafeteria, restaurante, açaiteria, confeitaria</span></div>
+        <div class="cat"><div class="top"><span class="num">02</span><span class="cnt">7 prompts</span></div><b>Saúde</b><span class="ex">Odontologia, estética, psicologia, fisioterapia, veterinária, nutrição, clínica médica</span></div>
+        <div class="cat"><div class="top"><span class="num">03</span><span class="cnt">4 prompts</span></div><b>Beleza</b><span class="ex">Barbearia, salão, studio de sobrancelhas e unhas, tatuagem</span></div>
+        <div class="cat"><div class="top"><span class="num">04</span><span class="cnt">3 prompts</span></div><b>Fitness</b><span class="ex">Academia, personal trainer, pilates e yoga</span></div>
+        <div class="cat"><div class="top"><span class="num">05</span><span class="cnt">5 prompts</span></div><b>Serviços profissionais</b><span class="ex">Advocacia, contabilidade, imobiliária, arquitetura, seguros</span></div>
+        <div class="cat"><div class="top"><span class="num">06</span><span class="cnt">4 prompts</span></div><b>Casa e construção</b><span class="ex">Construtora, planejados, serviços residenciais, limpeza</span></div>
+        <div class="cat"><div class="top"><span class="num">07</span><span class="cnt">5 prompts</span></div><b>Varejo</b><span class="ex">Boutique, pet shop, ótica, floricultura, joalheria</span></div>
+        <div class="cat"><div class="top"><span class="num">08</span><span class="cnt">3 prompts</span></div><b>Automotivo</b><span class="ex">Oficina, estética automotiva, autoescola</span></div>
+        <div class="cat"><div class="top"><span class="num">09</span><span class="cnt">3 prompts</span></div><b>Educação</b><span class="ex">Escola de idiomas, escola infantil, curso ou mentoria</span></div>
+        <div class="cat"><div class="top"><span class="num">10</span><span class="cnt">4 prompts</span></div><b>Eventos</b><span class="ex">Buffet, fotógrafo, cerimonial, locação de vestidos</span></div>
+        <div class="cat"><div class="top"><span class="num">11</span><span class="cnt">2 prompts</span></div><b>Turismo e hospedagem</b><span class="ex">Pousada, hotel boutique, agência de viagens</span></div>
+        <div class="cat more"><b>+ 12 prompts de ajuste</b><span class="ex">e 1 prompt coringa para analisar imagens</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band alt">
+    <div class="wrap">
+      <span class="eyebrow">Quanto dá para cobrar</span>
+      <h2>Cada prompt já vem com <em>o valor de referência.</em></h2>
+      <div class="tiers">
+        <div class="tier"><span class="tag">Landing page</span><div class="price">R$ 1.500 – 2.500</div><p>Uma página focada em uma ação: agendar, ligar ou chamar no WhatsApp.</p><div class="ex"><b>Exemplos:</b> psicólogo, personal trainer, serviços residenciais.</div></div>
+        <div class="tier"><span class="tag">Site institucional</span><div class="price">R$ 2.500 – 4.000</div><p>Várias seções e páginas internas, galeria, portfólio ou cardápio.</p><div class="ex"><b>Exemplos:</b> contabilidade, arquitetura, oficina, fotógrafo.</div></div>
+        <div class="tier hl"><span class="tag">Site + sistema</span><div class="price">R$ 4.000 – 5.000</div><p>Uma funcionalidade que trabalha pelo dono: carrinho, agendamento, catálogo com filtros ou quiz.</p><div class="ex"><b>Exemplos:</b> pizzaria, clínica odontológica, barbearia, imobiliária.</div></div>
+      </div>
+      <p class="math">Valores de referência para freelancers no Brasil. Eles variam com a sua região, o seu portfólio e o porte do cliente — por isso o guia também mostra <b>o que faz um site valer mais</b> e quais extras oferecer.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap fit">
+      <div class="box">
+        <h3>É para você se…</h3>
+        <ul class="chk">
+          <li>Você cria sites com IA (ou quer começar) e quer entregar projetos de nível profissional</li>
+          <li>Seus sites saem com cara de template e você não sabe o que mudar no prompt</li>
+          <li>Você quer atender negócios de vários nichos sem começar do zero toda vez</li>
+          <li>Você quer cobrar mais pelo mesmo tempo de trabalho</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>Não é para você se…</h3>
+        <ul class="chk no">
+          <li>Procura um site pronto sem precisar personalizar nada</li>
+          <li>Quer aprender a programar do zero — o foco aqui é criar com IA</li>
+          <li>Não pretende colocar os prompts em prática</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="band alt">
+    <div class="wrap author">
+      <img class="pic" src="/prompts/img/raul-ramos.webp" alt="Raul Ramos" width="120" height="120">
+      <div>
+        <span class="eyebrow">Quem escreve</span>
+        <h3>Raul Ramos</h3>
+        <p>Fundador da ramosraul.ia, estúdio que transforma ideias em experiências digitais: sites premium, micro SaaS e agentes de Inteligência Artificial. Neste guia, reuni os prompts e o processo que uso para entregar sites de alto valor em dias, não semanas.</p>
+        <a href="https://instagram.com/ramosraul.ia" target="_blank" rel="noopener">@ramosraul.ia</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="comprar">
+    <div class="wrap">
+      <div class="offer">
+        <div>
+          <span class="eyebrow">Acesso imediato</span>
+          <h2>Crie seu primeiro site premium <em>ainda hoje.</em></h2>
+          <ul class="chk">
+            <li>E-book completo em PDF, 67 páginas</li>
+            <li>46 prompts prontos em 11 categorias</li>
+            <li>Tutorial ilustrado com o kit de imagens para a IA</li>
+            <li>Prompt coringa de análise de imagens</li>
+            <li>12 prompts de ajuste para refinar o resultado</li>
+            <li>Guia de preços com 3 faixas de valor e sugestões de upsell</li>
+          </ul>
+        </div>
+        <div class="pricebox">
+          <div class="from">Acesso completo por apenas</div>
+          <div class="big">R$ 47,80</div>
+          <div class="inst">Pagamento único · sem mensalidade</div>
+          <a class="btn btn-gold" id="checkout" href="https://pay.kiwify.com.br/nDQkgyH" target="_blank" rel="noopener">Comprar agora</a>
+          <div class="note">Acesso enviado por e-mail logo após a confirmação do pagamento.</div>
+          <div class="guarantee">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D6A76C" stroke-width="1.8" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+            <span>Garantia de 7 dias: se não gostar, devolvemos 100% do valor.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band alt">
+    <div class="wrap center">
+      <h2>Perguntas frequentes</h2>
+      <div class="faq" style="text-align:left">
+        <details><summary>Como recebo o e-book?</summary><p>Logo após a confirmação do pagamento, você recebe por e-mail o acesso à área de membros, onde baixa o PDF. Pode ler no celular, no tablet ou no computador.</p></details>
+        <details><summary>Em qual IA os prompts funcionam?</summary><p>Em qualquer IA que gera código: Claude, ChatGPT, Lovable, v0, Bolt ou Cursor. O tutorial mostra como usar ferramentas com pré-visualização para já sair com um link para mostrar ao cliente.</p></details>
+        <details><summary>Preciso saber programar?</summary><p>Não para criar e apresentar o site. Saber o básico ajuda a fazer ajustes finos, mas os prompts de ajuste do guia resolvem a maior parte das mudanças sem você mexer no código.</p></details>
+        <details><summary>E se o nicho do meu cliente não estiver no guia?</summary><p>Use o prompt do nicho mais parecido e troque as seções e funcionalidades. A anatomia explicada no tutorial mostra exatamente o que mudar.</p></details>
+        <details><summary>Os valores de R$ 5 mil são garantidos?</summary><p>Não. São valores de referência do mercado, que variam com a sua região, o seu portfólio e o porte do cliente. O guia mostra o que faz um projeto valer mais, mas o preço final depende da sua negociação.</p></details>
+        <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. Se o conteúdo não for o que esperava, é só pedir o reembolso e devolvemos 100% do valor.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span style="color:var(--fg);font-weight:700">ramosraul<span style="color:var(--gold)">.ia</span></span>
+    <span class="mid">AUTOMAÇÃO · INTELIGÊNCIA · RESULTADOS</span>
+    <a href="https://ramosraul-ia.vercel.app" target="_blank" rel="noopener">ramosraul-ia.vercel.app</a>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a[href^="#"]'); if(!a) return;
+  var el=document.getElementById(a.getAttribute('href').slice(1)); if(!el) return;
+  e.preventDefault(); el.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth', block:'start'});
+});
+</script>
+</body>
+</html>

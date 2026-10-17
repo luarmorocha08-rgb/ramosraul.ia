@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: { formats: ["image/avif", "image/webp"] },
   experimental: { optimizePackageImports: ["three", "gsap"] },
+  async rewrites() {
+    return [{ source: "/prompts", destination: "/prompts/index.html" }];
+  },
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
